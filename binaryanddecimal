@@ -1,0 +1,43 @@
+package binarything;
+import java.util.*;
+import java.io.*;
+import java.util.Scanner;
+
+public class binary {
+		
+	public static String decimalToBinary(long num) {
+	    String binaryNum = "";
+	    while (num > 0) {
+	        long remainder = num % 2;
+	        binaryNum = remainder + binaryNum;
+	        num = num / 2;
+	    }
+	    return binaryNum;
+	}
+	
+	public static long binaryToDecimal(String binary) {
+		long decimal = 0;
+		int i = binary.length()-1;
+		int k = 0;
+		while(i >= 0) {
+			decimal += (binary.charAt(k) - '0')* Math.pow(2,i);
+			i--;
+			k++;
+		}
+		return decimal;
+	}
+	
+	public static void main (String [] args) {
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Would you lke to convert from binary to decimal or decimal to binary");
+		String answer = keyboard.nextLine();
+		System.out.println("Enter decimal or binary to convert");
+		String line = keyboard.nextLine();
+		if (answer.compareTo("binary to decimal") == 0) {
+			System.out.println (binaryToDecimal(line));
+		}
+		else {
+			System.out.println(decimalToBinary(Long.parseLong(line)));
+		}
+	}
+}
